@@ -53,7 +53,7 @@ Install by FTP
 
 
 == Frequently Asked Questions ==
-Do you have questions or issues with Responsive Pricing Table? [Ask for support here.](http://sayful1.wordpress.com/100-2/)
+Do you have questions or issues with Responsive Pricing Table? [Ask for support here.](http://wordpress.org/support/plugin/responsive-pricing-table)
 
 == Screenshots ==
 

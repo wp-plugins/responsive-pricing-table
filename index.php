@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Responsive Pricing Table
-Plugin URI: http://wordpress.org/plugins/
+Plugin URI: http://wordpress.org/plugins/responsive-pricing-table/
 Description: Dynamic responsive pricing table for WordPress.
 Version: 1.0
 Author: Sayful Islam

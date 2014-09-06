@@ -47,13 +47,23 @@ add_action('init', 'sis_wp_register_pricing_packages');
 
 function sis_wp_pricing_packages_meta_boxes() {
 
-    add_meta_box("pricing-package-info", __("Pricing Package Info"), 'sis_wp_generate_pricing_package_info', "pricing_packages", "normal", "high");
-    add_meta_box("pricing-features-info", __("Pricing Features"), 'sis_wp_generate_pricing_features_info', "pricing_packages", "normal", "high");
+    add_meta_box("pricing-package-info", __("Pricing Package Info", "pricingtable"), 'sis_wp_generate_pricing_package_info', "pricing_packages", "normal", "high");
+    add_meta_box("pricing-features-info", __("Pricing Features", "pricingtable"), 'sis_wp_generate_pricing_features_info', "pricing_packages", "normal", "high");
 }
 add_action('add_meta_boxes', 'sis_wp_pricing_packages_meta_boxes');
 
+
+$pricing_packages_info = array(
+    'package_price'         => __('Package Price', 'pricingtable'),
+    'package_tenure'        => __('Package Tenure', 'pricingtable'),
+    'package_buy_link'      => __('Buy Now Link', 'pricingtable'),
+    'add_package_features'  => __('Add Package Features', 'pricingtable'),
+    'add_features'          => __('Add Features', 'pricingtable'),
+    'delete'                => __('Delete', 'pricingtable'),
+);
+
 function sis_wp_generate_pricing_package_info() {
-    global $post;
+    global $post, $pricing_packages_info;
 
     $package_price = get_post_meta($post->ID, "_package_price", true);
     $package_tenure = get_post_meta($post->ID, "_package_tenure", true);
@@ -64,17 +74,17 @@ function sis_wp_generate_pricing_package_info() {
     $html .= '<table class="form-table">';
     // Pricing Price
     $html .= "<tr>";
-    $html .= "<th style=''><label for='Price'>Package Price *</label></th>";
+    $html .= "<th style=''><label for='Price'>".$pricing_packages_info['package_price']." *</label></th>";
     $html .= "<td><input name='package_price' id='package_price' type='text' value='$package_price' /></td>";
     $html .= "</tr>";
     // Pricing Tenure
     $html .= "<tr>";
-    $html .= "<th style=''><label for='Tenure'>Package Tenure</label></th>";
+    $html .= "<th style=''><label for='Tenure'>".$pricing_packages_info['package_tenure']."</label></th>";
     $html .= "<td><input name='package_tenure' id='package_tenure' type='text' value='$package_tenure' /></td>";
     $html .= "</tr>";
     // Buy Now Link
     $html .= "<tr>";
-    $html .= "<th style=''><label for='Buy Now'>Buy Now Link *</label></th>";
+    $html .= "<th style=''><label for='Buy Now'>".$pricing_packages_info['package_buy_link']." *</label></th>";
     $html .= "<td><input name='package_buy_link' id='package_buy_link' type='text' value='$package_buy_link' /></td>";
     $html .= "</tr>";
 
@@ -85,7 +95,7 @@ function sis_wp_generate_pricing_package_info() {
 
 function sis_wp_generate_pricing_features_info() {
 
-    global $post;
+    global $post, $pricing_packages_info;
 
     $package_features = get_post_meta($post->ID, "_package_features", true);
     $package_features = ($package_features == '') ? array() : json_decode($package_features);
@@ -93,15 +103,15 @@ function sis_wp_generate_pricing_features_info() {
     $html .= '<table class="form-table">';
 
     $html .= "<tr>";
-    $html .= "<th style=''><label for='Price'>Add Package Features</label></th>";
-    $html .= "<td><input name='package_feature' id='package_feature' type='text'  /> <input type='button' id='add_features' value='Add Features' /></td>";
+    $html .= "<th style=''><label for='Price'>".$pricing_packages_info['add_package_features']."</label></th>";
+    $html .= "<td><input name='package_feature' id='package_feature' type='text'  /> <input type='button' id='add_features' value='".$pricing_packages_info['add_features']."' /></td>";
     $html .= "</tr>";
 
     $html .= "<tr><td><ul id='package_features_box' name='package_features_box' >";
 
     foreach ($package_features as $package_feature) {
         $html .= "<li><input type='hidden' name='package_features[]' value='$package_feature' />$package_feature
-        <a href='javascript:void(0);'>Delete</a></li>";
+        <a href='javascript:void(0);'> ".$pricing_packages_info['delete']."</a></li>";
     }
     
     $html .= "</ul></td></tr>";

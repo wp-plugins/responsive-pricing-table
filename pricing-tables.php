@@ -46,7 +46,7 @@ add_action( 'init', 'sis_wp_pricing_tables', 0 );
 // Using Custom Fields for Table Information
 function sis_wp_pricing_tables_meta_boxes() {
  
-    add_meta_box( "pricing-table-info", __("Pricing Table Info"), 'sis_wp_generate_pricing_table_info', "pricing_tables", "normal", "high" );
+    add_meta_box( "pricing-table-info", __("Pricing Table Info", "pricingtable"), 'sis_wp_generate_pricing_table_info', "pricing_tables", "normal", "high" );
  
 }
 add_action( 'add_meta_boxes', 'sis_wp_pricing_tables_meta_boxes' );
@@ -54,6 +54,11 @@ add_action( 'add_meta_boxes', 'sis_wp_pricing_tables_meta_boxes' );
 // Add meta box content for Pricing Table Info
 function sis_wp_generate_pricing_table_info(){
     global $post;
+
+    $pricing_table_info = array(
+        'package_status'         => __('Package Status', 'pricingtable'),
+        'package_name'         => __('Package Name', 'pricingtable'),
+    );
  
     $table_packages = get_post_meta( $post->ID, "_table_packages", true );
     $table_packages = ( $table_packages == '' ) ? array() : json_decode( $table_packages );
@@ -70,8 +75,8 @@ function sis_wp_generate_pricing_table_info(){
  
     $html .= '<table class="form-table">';
     $html .= '<tr>';
-    $html .= '<th>Package Status</th>';
-    $html .= '<td>Package Name</td></tr>';
+    $html .= '<th>'.$pricing_table_info['package_status'].'</th>';
+    $html .= '<td>'.$pricing_table_info['package_name'].'</td></tr>';
     $html .= '</tr>';
  
     while ( $query->have_posts() ) : $query->the_post();

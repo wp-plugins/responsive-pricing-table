@@ -7,6 +7,8 @@ add_shortcode("show_pricing_table", "sis_wp_generate_pricing_table");
 function sis_wp_generate_pricing_table($atts) {
     global $post;
 
+    $buy_now = __('Buy Now', 'pricingtable');
+
     extract(shortcode_atts(array(
 		'table_id' => '0',
 	), $atts));
@@ -43,7 +45,7 @@ function sis_wp_generate_pricing_table($atts) {
         }
 
         $html .= '</ul>';
-        $html .= '<div class="footer"><a href="' . $package_buy_link . '" class="package_buy_link" rel="nofollow">Buy Now</a></div>';
+        $html .= '<div class="footer"><a href="' . $package_buy_link . '" class="package_buy_link" rel="nofollow">'.$buy_now.'</a></div>';
         $html .= '</li>';
     }
     $html .= '</ul>';

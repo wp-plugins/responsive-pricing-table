@@ -46,7 +46,7 @@ add_action( 'init', 'sis_wp_pricing_tables', 0 );
 // Using Custom Fields for Table Information
 function sis_wp_pricing_tables_meta_boxes() {
  
-    add_meta_box( "pricing-table-info", "Pricing Table Info", 'sis_wp_generate_pricing_table_info', "pricing_tables", "normal", "high" );
+    add_meta_box( "pricing-table-info", __("Pricing Table Info"), 'sis_wp_generate_pricing_table_info', "pricing_tables", "normal", "high" );
  
 }
 add_action( 'add_meta_boxes', 'sis_wp_pricing_tables_meta_boxes' );
@@ -118,9 +118,9 @@ function sis_wp_edit_pricing_tables_columns($columns){
     
     $columns = array(
         'cb' => '<input type="checkbox" />',
-        'ID' => __('Pricing Table No'),
-        'title' => __('Pricing Table Name'),
-        'date' => __('Date')
+        'ID' => __('Pricing Table No', 'pricingtable'),
+        'title' => __('Pricing Table Name', 'pricingtable'),
+        'date' => __('Date', 'pricingtable')
     );
 
     return $columns;

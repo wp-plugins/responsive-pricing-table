@@ -20,11 +20,10 @@ function sis_wp_register_pricing_packages() {
     );
 
     $args = array(
-        'label'               => __( 'Pricing Packages', 'pricingtable' ),
-        'description'         => __( 'Pricing Packages', 'pricingtable' ),
+        'label'                 => __( 'Pricing Packages', 'pricingtable' ),
+        'description'           => __( 'Pricing Packages', 'pricingtable' ),
         'labels'                => $labels,
         'hierarchical'          => false,
-        'description'           => 'Pricing Packages',
         'supports'              => array('title'),
         'public'                => true,
         'show_ui'               => true,

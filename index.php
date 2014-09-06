@@ -6,12 +6,22 @@ Description: Dynamic responsive pricing table for WordPress.
 Version: 1.0
 Author: Sayful Islam
 Author URI: http://sayful.net
+Text Domain: pricingtable
+Domain Path: /languages/
 License: GPLv2 or later
 */
 // Include others files
 include_once('pricing-packages.php');
 include_once('pricing-tables.php');
 include_once('pricing-shortcode.php');
+
+/**
+ * Load plugin textdomain.
+ */
+function sis_wp_pricing_load_textdomain() {
+  load_plugin_textdomain( 'pricingtable', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'sis_wp_pricing_load_textdomain' );
 
 /*
  * WordPress Admin Dashborad Scripts and Styles

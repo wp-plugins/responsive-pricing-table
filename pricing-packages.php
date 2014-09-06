@@ -5,21 +5,23 @@
 function sis_wp_register_pricing_packages() {
 
     $labels = array(
-        'name'                  => _x('Pricing Packages', 'text_domain'),
-        'singular_name'         => _x('Pricing Package', 'text_domain'),
-        'add_new'               => _x('Add New', 'text_domain'),
-        'add_new_item'          => _x('Add New Pricing Package', 'text_domain'),
-        'edit_item'             => _x('Edit Pricing Package', 'text_domain'),
-        'new_item'              => _x('New Pricing Package', 'text_domain'),
-        'view_item'             => _x('View Pricing Package', 'text_domain'),
-        'search_items'          => _x('Search Pricing Packages', 'text_domain'),
-        'not_found'             => _x('No Pricing Packages found', 'text_domain'),
-        'not_found_in_trash'    => _x('No Pricing Packages found in Trash', 'text_domain'),
-        'parent_item_colon'     => _x('Parent Pricing Package:', 'text_domain'),
-        'menu_name'             => _x('Pricing Packages', 'text_domain'),
+        'name'                  => _x('Pricing Packages', 'pricingtable'),
+        'singular_name'         => _x('Pricing Package', 'pricingtable'),
+        'add_new'               => _x('Add New', 'pricingtable'),
+        'add_new_item'          => _x('Add New Pricing Package', 'pricingtable'),
+        'edit_item'             => _x('Edit Pricing Package', 'pricingtable'),
+        'new_item'              => _x('New Pricing Package', 'pricingtable'),
+        'view_item'             => _x('View Pricing Package', 'pricingtable'),
+        'search_items'          => _x('Search Pricing Packages', 'pricingtable'),
+        'not_found'             => _x('No Pricing Packages found', 'pricingtable'),
+        'not_found_in_trash'    => _x('No Pricing Packages found in Trash', 'pricingtable'),
+        'parent_item_colon'     => _x('Parent Pricing Package:', 'pricingtable'),
+        'menu_name'             => _x('Pricing Packages', 'pricingtable'),
     );
 
     $args = array(
+        'label'               => __( 'Pricing Packages', 'pricingtable' ),
+        'description'         => __( 'Pricing Packages', 'pricingtable' ),
         'labels'                => $labels,
         'hierarchical'          => false,
         'description'           => 'Pricing Packages',
@@ -46,8 +48,8 @@ add_action('init', 'sis_wp_register_pricing_packages');
 
 function sis_wp_pricing_packages_meta_boxes() {
 
-    add_meta_box("pricing-package-info", "Pricing Package Info", 'sis_wp_generate_pricing_package_info', "pricing_packages", "normal", "high");
-    add_meta_box("pricing-features-info", "Pricing Features", 'sis_wp_generate_pricing_features_info', "pricing_packages", "normal", "high");
+    add_meta_box("pricing-package-info", __("Pricing Package Info"), 'sis_wp_generate_pricing_package_info', "pricing_packages", "normal", "high");
+    add_meta_box("pricing-features-info", __("Pricing Features"), 'sis_wp_generate_pricing_features_info', "pricing_packages", "normal", "high");
 }
 add_action('add_meta_boxes', 'sis_wp_pricing_packages_meta_boxes');
 

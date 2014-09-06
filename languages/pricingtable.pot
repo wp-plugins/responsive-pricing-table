@@ -1,0 +1,190 @@
+# Copyright (C) 2014 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/responsive-pricing-table\n"
+"POT-Creation-Date: 2014-09-06 17:14:10+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: pricing-packages.php:8 pricing-packages.php:19
+msgctxt "pricingtable"
+msgid "Pricing Packages"
+msgstr ""
+
+#: pricing-packages.php:9
+msgctxt "pricingtable"
+msgid "Pricing Package"
+msgstr ""
+
+#: pricing-packages.php:10
+msgctxt "pricingtable"
+msgid "Add New"
+msgstr ""
+
+#: pricing-packages.php:11
+msgctxt "pricingtable"
+msgid "Add New Pricing Package"
+msgstr ""
+
+#: pricing-packages.php:12
+msgctxt "pricingtable"
+msgid "Edit Pricing Package"
+msgstr ""
+
+#: pricing-packages.php:13
+msgctxt "pricingtable"
+msgid "New Pricing Package"
+msgstr ""
+
+#: pricing-packages.php:14
+msgctxt "pricingtable"
+msgid "View Pricing Package"
+msgstr ""
+
+#: pricing-packages.php:15
+msgctxt "pricingtable"
+msgid "Search Pricing Packages"
+msgstr ""
+
+#: pricing-packages.php:16
+msgctxt "pricingtable"
+msgid "No Pricing Packages found"
+msgstr ""
+
+#: pricing-packages.php:17
+msgctxt "pricingtable"
+msgid "No Pricing Packages found in Trash"
+msgstr ""
+
+#: pricing-packages.php:18
+msgctxt "pricingtable"
+msgid "Parent Pricing Package:"
+msgstr ""
+
+#: pricing-packages.php:23 pricing-packages.php:24
+msgid "Pricing Packages"
+msgstr ""
+
+#: pricing-packages.php:50
+msgid "Pricing Package Info"
+msgstr ""
+
+#: pricing-packages.php:51
+msgid "Pricing Features"
+msgstr ""
+
+#: pricing-packages.php:57
+msgid "Package Price"
+msgstr ""
+
+#: pricing-packages.php:58
+msgid "Package Tenure"
+msgstr ""
+
+#: pricing-packages.php:59
+msgid "Buy Now Link"
+msgstr ""
+
+#: pricing-packages.php:60
+msgid "Add Package Features"
+msgstr ""
+
+#: pricing-packages.php:61
+msgid "Add Features"
+msgstr ""
+
+#: pricing-packages.php:62
+msgid "Delete"
+msgstr ""
+
+#: pricing-shortcode.php:10
+msgid "Buy Now"
+msgstr ""
+
+#: pricing-tables.php:6
+msgctxt "Post Type General Name"
+msgid "Pricing Tables"
+msgstr ""
+
+#: pricing-tables.php:7
+msgctxt "Post Type Singular Name"
+msgid "Pricing Table"
+msgstr ""
+
+#: pricing-tables.php:8 pricing-tables.php:21 pricing-tables.php:22
+msgid "Pricing Tables"
+msgstr ""
+
+#: pricing-tables.php:9
+msgid "Parent Pricing Table:"
+msgstr ""
+
+#: pricing-tables.php:10
+msgid "All Pricing Tables"
+msgstr ""
+
+#: pricing-tables.php:11
+msgid "View Pricing Table"
+msgstr ""
+
+#: pricing-tables.php:12
+msgid "Add New Pricing Table"
+msgstr ""
+
+#: pricing-tables.php:13
+msgid "Add New"
+msgstr ""
+
+#: pricing-tables.php:14
+msgid "Edit Pricing Table"
+msgstr ""
+
+#: pricing-tables.php:15
+msgid "Update Pricing Table"
+msgstr ""
+
+#: pricing-tables.php:16
+msgid "Search Pricing Table"
+msgstr ""
+
+#: pricing-tables.php:17
+msgid "Not found"
+msgstr ""
+
+#: pricing-tables.php:18
+msgid "Not found in Trash"
+msgstr ""
+
+#: pricing-tables.php:49
+msgid "Pricing Table Info"
+msgstr ""
+
+#: pricing-tables.php:59
+msgid "Package Status"
+msgstr ""
+
+#: pricing-tables.php:60
+msgid "Package Name"
+msgstr ""
+
+#: pricing-tables.php:126
+msgid "Pricing Table No"
+msgstr ""
+
+#: pricing-tables.php:127
+msgid "Pricing Table Name"
+msgstr ""
+
+#: pricing-tables.php:128
+msgid "Date"
+msgstr ""
+
+#: pricing-tables.php:149
+msgid "Unknown"
+msgstr ""

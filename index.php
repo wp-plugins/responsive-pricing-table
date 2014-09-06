@@ -3,7 +3,7 @@
 Plugin Name: Responsive Pricing Table
 Plugin URI: http://wordpress.org/plugins/responsive-pricing-table/
 Description: Dynamic responsive pricing table for WordPress.
-Version: 1.0
+Version: 1.0.1
 Author: Sayful Islam
 Author URI: http://sayful.net
 Text Domain: pricingtable

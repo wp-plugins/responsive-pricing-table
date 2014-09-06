@@ -3,7 +3,7 @@ Contributors: sayful
 Tags: plugin, shortcode, pricing table, responsive pricing table, easy pricing table,
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +64,10 @@ Do you have questions or issues with Responsive Pricing Table? [Ask for support 
 5. Screenshot of front-end display of pricing table.
 
 == Changelog ==
+
+= version 1.0.2 =
+* Translation ready
+* Translated to Bengali Language
 
 = version 1.0.1 =
 * Tested with WordPress verson 4.0

@@ -1,48 +1,47 @@
 <?php
-/*
- * Registering and saving pricing packages
- */
+// Register Custom Post Type
 function sis_wp_register_pricing_packages() {
 
-    $labels = array(
-        'name'                  => _x('Pricing Packages', 'pricingtable'),
-        'singular_name'         => _x('Pricing Package', 'pricingtable'),
-        'add_new'               => _x('Add New', 'pricingtable'),
-        'add_new_item'          => _x('Add New Pricing Package', 'pricingtable'),
-        'edit_item'             => _x('Edit Pricing Package', 'pricingtable'),
-        'new_item'              => _x('New Pricing Package', 'pricingtable'),
-        'view_item'             => _x('View Pricing Package', 'pricingtable'),
-        'search_items'          => _x('Search Pricing Packages', 'pricingtable'),
-        'not_found'             => _x('No Pricing Packages found', 'pricingtable'),
-        'not_found_in_trash'    => _x('No Pricing Packages found in Trash', 'pricingtable'),
-        'parent_item_colon'     => _x('Parent Pricing Package:', 'pricingtable'),
-        'menu_name'             => _x('Pricing Packages', 'pricingtable'),
-    );
+	$labels = array(
+		'name'                => _x( 'Pricing Packages', 'Post Type General Name', 'pricingtable' ),
+		'singular_name'       => _x( 'Pricing Package', 'Post Type Singular Name', 'pricingtable' ),
+		'menu_name'           => __( 'Pricing Packages', 'pricingtable' ),
+		'parent_item_colon'   => __( 'Parent Pricing Package:', 'pricingtable' ),
+		'all_items'           => __( 'All Pricing Packages', 'pricingtable' ),
+		'view_item'           => __( 'View Pricing Package', 'pricingtable' ),
+		'add_new_item'        => __( 'Add New Pricing Package', 'pricingtable' ),
+		'add_new'             => __( 'Add New', 'pricingtable' ),
+		'edit_item'           => __( 'Edit Pricing Package', 'pricingtable' ),
+		'update_item'         => __( 'Update Pricing Package', 'pricingtable' ),
+		'search_items'        => __( 'Search Pricing Package', 'pricingtable' ),
+		'not_found'           => __( 'Not found', 'pricingtable' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'pricingtable' ),
+	);
+	$args = array(
+		'label'               => __( 'pricing_packages', 'pricingtable' ),
+		'description'         => __( 'Pricing Packages', 'pricingtable' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'menu_icon'           => ''.plugins_url( 'img/packages.png' , __FILE__ ).'',
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+	);
+	register_post_type( 'pricing_packages', $args );
 
-    $args = array(
-        'label'                 => __( 'Pricing Packages', 'pricingtable' ),
-        'description'           => __( 'Pricing Packages', 'pricingtable' ),
-        'labels'                => $labels,
-        'hierarchical'          => false,
-        'supports'              => array('title'),
-        'public'                => true,
-        'show_ui'               => true,
-        'show_in_menu'          => true,
-        'show_in_nav_menus'     => true,
-        'menu_position'         => 5,
-        'menu_icon'             => ''.plugins_url( 'img/packages.png' , __FILE__ ).'',
-        'publicly_queryable'    => true,
-        'exclude_from_search'   => false,
-        'has_archive'           => true,
-        'query_var'             => true,
-        'can_export'            => true,
-        'rewrite'               => true,
-        'capability_type'       => 'post'
-    );
-
-    register_post_type('pricing_packages', $args);
 }
-add_action('init', 'sis_wp_register_pricing_packages');
+
+// Hook into the 'init' action
+add_action( 'init', 'sis_wp_register_pricing_packages', 0 );
 
 
 function sis_wp_pricing_packages_meta_boxes() {
@@ -53,17 +52,14 @@ function sis_wp_pricing_packages_meta_boxes() {
 add_action('add_meta_boxes', 'sis_wp_pricing_packages_meta_boxes');
 
 
-$pricing_packages_info = array(
-    'package_price'         => __('Package Price', 'pricingtable'),
-    'package_tenure'        => __('Package Tenure', 'pricingtable'),
-    'package_buy_link'      => __('Buy Now Link', 'pricingtable'),
-    'add_package_features'  => __('Add Package Features', 'pricingtable'),
-    'add_features'          => __('Add Features', 'pricingtable'),
-    'delete'                => __('Delete', 'pricingtable'),
-);
-
 function sis_wp_generate_pricing_package_info() {
-    global $post, $pricing_packages_info;
+    global $post;
+
+	$pricing_packages_info = array(
+	    'package_price'         => __('Package Price', 'pricingtable'),
+	    'package_tenure'        => __('Package Tenure', 'pricingtable'),
+	    'package_buy_link'      => __('Buy Now Link', 'pricingtable'),
+	);
 
     $package_price = get_post_meta($post->ID, "_package_price", true);
     $package_tenure = get_post_meta($post->ID, "_package_tenure", true);
@@ -95,7 +91,13 @@ function sis_wp_generate_pricing_package_info() {
 
 function sis_wp_generate_pricing_features_info() {
 
-    global $post, $pricing_packages_info;
+    global $post;
+
+	$pricing_features_info = array(
+	    'add_package_features'  => __('Add Package Features', 'pricingtable'),
+	    'add_features'          => __('Add Features', 'pricingtable'),
+	    'delete'                => __('Delete', 'pricingtable'),
+	);
 
     $package_features = get_post_meta($post->ID, "_package_features", true);
     $package_features = ($package_features == '') ? array() : json_decode($package_features);
@@ -103,15 +105,15 @@ function sis_wp_generate_pricing_features_info() {
     $html .= '<table class="form-table">';
 
     $html .= "<tr>";
-    $html .= "<th style=''><label for='Price'>".$pricing_packages_info['add_package_features']."</label></th>";
-    $html .= "<td><input name='package_feature' id='package_feature' type='text'  /> <input type='button' id='add_features' value='".$pricing_packages_info['add_features']."' /></td>";
+    $html .= "<th style=''><label for='Price'>".$pricing_features_info['add_package_features']."</label></th>";
+    $html .= "<td><input name='package_feature' id='package_feature' type='text'  /> <input type='button' id='add_features' value='".$pricing_features_info['add_features']."' /></td>";
     $html .= "</tr>";
 
     $html .= "<tr><td><ul id='package_features_box' name='package_features_box' >";
 
     foreach ($package_features as $package_feature) {
         $html .= "<li><input type='hidden' name='package_features[]' value='$package_feature' />$package_feature
-        <a href='javascript:void(0);'> ".$pricing_packages_info['delete']."</a></li>";
+        <a href='javascript:void(0);'> ".$pricing_features_info['delete']."</a></li>";
     }
     
     $html .= "</ul></td></tr>";

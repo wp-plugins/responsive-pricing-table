@@ -43,7 +43,7 @@ function sis_wp_generate_pricing_table($atts) {
         }
 
         $html .= '</ul>';
-        $html .= '<div class="footer"><a href="' . $package_buy_link . '" class="package_buy_link">Buy Now</a></div>';
+        $html .= '<div class="footer"><a href="' . $package_buy_link . '" class="package_buy_link" rel="nofollow">Buy Now</a></div>';
         $html .= '</li>';
     }
     $html .= '</ul>';

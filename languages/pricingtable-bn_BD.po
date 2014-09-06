@@ -4,105 +4,100 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Responsive Pricing Table\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/responsive-pricing-table\n"
-"POT-Creation-Date: 2014-09-06 17:14:10+00:00\n"
+"POT-Creation-Date: 2014-09-06 18:32:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-09-07 00:06+0600\n"
+"PO-Revision-Date: 2014-09-07 00:49+0600\n"
 "Last-Translator: Sayful Islam <sayful.islam001@gmail.com>\n"
-"Language-Team: Sayful Islam <sayful.islam001@gmail.com>\n"
+"Language-Team: \n"
 "X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: Bengali\n"
 
-#: pricing-packages.php:8 pricing-packages.php:19
-msgctxt "pricingtable"
+#: pricing-packages.php:6
+msgctxt "Post Type General Name"
+msgid "Pricing Packages"
+msgstr "প্রাইসিং প্যাকেজ"
+
+#: pricing-packages.php:7
+msgctxt "Post Type Singular Name"
+msgid "Pricing Package"
+msgstr "প্রাইসিং প্যাকেজ"
+
+#: pricing-packages.php:8 pricing-packages.php:22
 msgid "Pricing Packages"
 msgstr "প্রাইসিং প্যাকেজ"
 
 #: pricing-packages.php:9
-msgctxt "pricingtable"
-msgid "Pricing Package"
-msgstr "প্রাইসিং প্যাকেজ"
-
-#: pricing-packages.php:10
-msgctxt "pricingtable"
-msgid "Add New"
-msgstr "নতুন যুক্ত করুন"
-
-#: pricing-packages.php:11
-msgctxt "pricingtable"
-msgid "Add New Pricing Package"
-msgstr "নতুন মূল্যের প্যাকেজ যোগ করুন"
-
-#: pricing-packages.php:12
-msgctxt "pricingtable"
-msgid "Edit Pricing Package"
-msgstr "সম্পাদনা করুন প্রাইসিং প্যাকেজ"
-
-#: pricing-packages.php:13
-msgctxt "pricingtable"
-msgid "New Pricing Package"
-msgstr "নতুন মূল্যের প্যাকেজ"
-
-#: pricing-packages.php:14
-msgctxt "pricingtable"
-msgid "View Pricing Package"
-msgstr "প্রাইসিং প্যাকেজ দেখুন"
-
-#: pricing-packages.php:15
-msgctxt "pricingtable"
-msgid "Search Pricing Packages"
-msgstr "প্রাইসিং প্যাকেজ অনুসন্ধান"
-
-#: pricing-packages.php:16
-msgctxt "pricingtable"
-msgid "No Pricing Packages found"
-msgstr "কোন প্রাইসিং প্যাকেজ পাওয়া যায় নি"
-
-#: pricing-packages.php:17
-msgctxt "pricingtable"
-msgid "No Pricing Packages found in Trash"
-msgstr "ট্টাস্টে কোন প্রাইসিং প্যাকেজ পাওয়া যায় নি"
-
-#: pricing-packages.php:18
-msgctxt "pricingtable"
 msgid "Parent Pricing Package:"
 msgstr "মূল প্রাইসিং প্যাকেজ:"
 
-#: pricing-packages.php:23 pricing-packages.php:24
-msgid "Pricing Packages"
-msgstr "প্রাইসিং প্যাকেজ"
+#: pricing-packages.php:10
+msgid "All Pricing Packages"
+msgstr "সমস্ত প্রাইসিং প্যাকেজ"
 
-#: pricing-packages.php:50
+#: pricing-packages.php:11
+msgid "View Pricing Package"
+msgstr "প্রাইসিং প্যাকেজ দেখুন"
+
+#: pricing-packages.php:12
+msgid "Add New Pricing Package"
+msgstr "নতুন মূল্যের প্যাকেজ যোগ করুন"
+
+#: pricing-packages.php:13 pricing-tables.php:13
+msgid "Add New"
+msgstr "নতুন যুক্ত করুন"
+
+#: pricing-packages.php:14
+msgid "Edit Pricing Package"
+msgstr "সম্পাদনা করুন প্রাইসিং প্যাকেজ"
+
+#: pricing-packages.php:15
+msgid "Update Pricing Package"
+msgstr "প্রাইসিং প্যাকেজ হালনাগাদ করুন"
+
+#: pricing-packages.php:16
+msgid "Search Pricing Package"
+msgstr "প্রাইসিং প্যাকেজ অনুসন্ধান"
+
+#: pricing-packages.php:17 pricing-tables.php:17
+msgid "Not found"
+msgstr "পাওয়া যায়নি"
+
+#: pricing-packages.php:18 pricing-tables.php:18
+msgid "Not found in Trash"
+msgstr "ট্র্যাশ পাওয়া যায় নি"
+
+#: pricing-packages.php:49
 msgid "Pricing Package Info"
 msgstr "প্রাইসিং প্যাকেজ তথ্য"
 
-#: pricing-packages.php:51
+#: pricing-packages.php:50
 msgid "Pricing Features"
 msgstr "প্রাইসিং বৈশিষ্ট্য"
 
-#: pricing-packages.php:57
+#: pricing-packages.php:59
 msgid "Package Price"
 msgstr "প্যাকেজ মূল্য"
 
-#: pricing-packages.php:58
+#: pricing-packages.php:60
 msgid "Package Tenure"
 msgstr "প্যাকেজ মেয়াদ"
 
-#: pricing-packages.php:59
+#: pricing-packages.php:61
 msgid "Buy Now Link"
 msgstr "এখনই কিনুন লিংক"
 
-#: pricing-packages.php:60
+#: pricing-packages.php:97
 msgid "Add Package Features"
 msgstr "প্যাকেজ বৈশিষ্ট্য যোগ করুন"
 
-#: pricing-packages.php:61
+#: pricing-packages.php:98
 msgid "Add Features"
 msgstr "বৈশিষ্ট্য যোগ করুন"
 
-#: pricing-packages.php:62
+#: pricing-packages.php:99
 msgid "Delete"
 msgstr "মুছুন"
 
@@ -130,7 +125,7 @@ msgstr "মূল প্রাইসিং টেবিল:"
 
 #: pricing-tables.php:10
 msgid "All Pricing Tables"
-msgstr "সমস্ত প্রাইসিং টেবিল দেখুন"
+msgstr "সমস্ত প্রাইসিং টেবিল"
 
 #: pricing-tables.php:11
 msgid "View Pricing Table"
@@ -138,11 +133,7 @@ msgstr "প্রাইসিং টেবিল দেখুন"
 
 #: pricing-tables.php:12
 msgid "Add New Pricing Table"
-msgstr "নতুন প্রাইসিং টেবিল যোগ করুন"
-
-#: pricing-tables.php:13
-msgid "Add New"
-msgstr "নতুন যুক্ত করুন"
+msgstr "প্রাইসিং প্যাকেজ"
 
 #: pricing-tables.php:14
 msgid "Edit Pricing Table"
@@ -155,14 +146,6 @@ msgstr "আপডেট প্রাইসিং টেবিল"
 #: pricing-tables.php:16
 msgid "Search Pricing Table"
 msgstr "প্রাইসিং টেবিল অনুসন্ধান"
-
-#: pricing-tables.php:17
-msgid "Not found"
-msgstr "কোন পাওয়া যায়নি"
-
-#: pricing-tables.php:18
-msgid "Not found in Trash"
-msgstr "ট্র্যাশ পাওয়া যায় নি"
 
 #: pricing-tables.php:49
 msgid "Pricing Table Info"

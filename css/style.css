@@ -21,8 +21,9 @@
 .pricing_table h3.plan_title {
     text-transform: uppercase;
     padding: 5px 0;
-    background: #333;
-    margin: -10px 0 1px 0
+    color: #fff !important;
+    background: #333 !important;
+    margin: -10px 0 1px !important;
 }
 .price {
     display: table;
@@ -45,7 +46,9 @@
 }
 .features {
     background: #def0f4;
-    color: #000
+    color: #000;
+    margin: 0;
+    padding: 0;
 }
 .features li {
     padding: 8px 15px;
@@ -54,12 +57,12 @@
     list-style-type: none;
     margin: 0 !important;
 }
-.footer {
-    padding: 15px;
+.price_block .footer {
+    padding: 15px 10px;
     background: #def0f4
 }
 .package_buy_link {
-    text-decoration: none;
+    text-decoration: none !important;
     color: #fff !important;
     font-weight: bold;
     border-radius: 5px;

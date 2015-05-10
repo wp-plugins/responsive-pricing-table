@@ -1,9 +1,17 @@
+.pricing_table:before,
+.pricing_table:after {
+    display: table;
+    content: " ";
+}
+.pricing_table:after {
+    clear: both;
+}
 .pricing_table {
     line-height: 150% !important;
     font-size: 12px;
     margin: 30px auto !important;
-    max-width: 900px;
     padding-top: 10px;
+    position: relative;
 }
 .price_block {
     text-align: center;

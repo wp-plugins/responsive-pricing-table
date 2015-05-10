@@ -2,16 +2,14 @@
 /*
  * Pricing table shortcode
  */
-add_shortcode("show_pricing_table", "sis_wp_generate_pricing_table");
 
 function sis_wp_generate_pricing_table($atts) {
-    global $post;
-
-    $buy_now = __('Buy Now', 'pricingtable');
 
     extract(shortcode_atts(array(
 		'table_id' => '0',
 	), $atts));
+
+    $buy_now = __('Buy Now', 'pricingtable');
 
     $table_packages = get_post_meta($table_id, "_table_packages", true);
     $table_packages = ($table_packages == '') ? array() : json_decode($table_packages);
@@ -50,5 +48,6 @@ function sis_wp_generate_pricing_table($atts) {
     }
     $html .= '</ul>';
 
-    echo  $html;
+    return $html;
 }
+add_shortcode("show_pricing_table", "sis_wp_generate_pricing_table");

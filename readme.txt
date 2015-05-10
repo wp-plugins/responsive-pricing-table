@@ -11,13 +11,21 @@ A WordPress plugin allow you generate and manage CSS3 pricing table or compariso
 
 == Description ==
 
-A WordPress plugin allow you generate and manage CSS3 pricing table or comparison table with table generator by WordPress Custom Post in the easy way.
+A WordPress plugin allow you generate and manage CSS3 pricing table or comparison table with table generator by WordPress Custom Post in the easy way. It it perfect for 4 (Four) pricing/ comparison tables.
 
-To create pricing/comparison tables, follow the instructions:
+= To create pricing/comparison tables, follow the instructions: =
 
-1. At first, Go to WordPress Dashboard then "Pricing Packages >> Add New" and fill the information and Add Package Features. Create as many package as you want. And then
+<ul>
+	<li>Log in to the WordPress Administration Panels.</li>
+	<li>Go to <strong>Responsive Pricing Table -> All Pricing Packages -> Add New</strong></li>
+	<li>Fill all the fields and add features as many as you need and then click <strong>Publish</strong></li>
+	<li>At this same way, create as many package as you need.</li>
+</ul>
 
-2. Click on "Pricing Tables >> Add New" and give a name and check on the package which you want to include for you table and then click on "Publish".
+<ul>
+	<li>After creating Packages, Go to <strong>Responsive Pricing Table -> All Pricing Tables -> Add New</strong></li>
+	<li>Give your table title and check whick packages you want to include in the table and click <strong>Publish</strong></li>
+</ul>
 
 Just paste the following shortcode where you want to display the pricing table. inside table_id="" give table ID, to get table ID go "Pricing Tables >> All Pricing Tables" 
 

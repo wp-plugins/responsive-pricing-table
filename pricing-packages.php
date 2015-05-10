@@ -147,3 +147,60 @@ function sis_wp_save_pricing_packages($post_id) {
     }
 }
 add_action('save_post', 'sis_wp_save_pricing_packages');
+
+
+function pricing_packages_columns_head( $defaults ) {
+    unset( $defaults['date'] );
+
+    $defaults['package_price'] = __( 'Package Price' );
+    $defaults['package_tenure'] = __( 'Package Tenure' );
+    $defaults['package_buy_link'] = __( 'Package Buy Link' );
+    $defaults['package_features'] = __( 'Package Features' );
+
+    return $defaults;
+}
+add_filter( 'manage_edit-pricing_packages_columns', 'pricing_packages_columns_head');
+
+
+function pricing_packages_columns_content( $column_name ) {
+
+    global $post;
+
+    $package_price = get_post_meta($post->ID, "_package_price", true);
+    $package_tenure = get_post_meta($post->ID, "_package_tenure", true);
+    $package_buy_link = get_post_meta($post->ID, "_package_buy_link", true);
+
+    $package_features = get_post_meta($post->ID, "_package_features", true);
+    $package_features = ($package_features == '') ? array() : json_decode($package_features);
+
+
+    if ( 'package_price' == $column_name ) {
+
+        if (! empty( $package_price )) {
+            echo $package_price;
+        }
+    }
+    if ( 'package_tenure' == $column_name ) {
+
+        if (! empty( $package_tenure )) {
+            echo $package_tenure;
+        }
+    }
+    if ( 'package_buy_link' == $column_name ) {
+
+        if (! empty( $package_buy_link )) {
+            echo $package_buy_link;
+        }
+    }
+    if ( 'package_features' == $column_name ) {
+
+        if (! empty( $package_features )) {
+
+            foreach ($package_features as $package_feature) {
+                echo $package_feature.'<br>';
+            }
+        }
+    }
+}
+
+add_action( 'manage_pricing_packages_posts_custom_column', 'pricing_packages_columns_content');

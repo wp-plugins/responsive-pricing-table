@@ -46,7 +46,6 @@ add_action( 'init', 'sis_wp_register_pricing_packages', 0 );
 function sis_wp_pricing_packages_meta_boxes() {
 
     add_meta_box("pricing-package-info", __("Pricing Package Info", "pricingtable"), 'sis_wp_generate_pricing_package_info', "pricing_packages", "normal", "high");
-    add_meta_box("pricing-features-info", __("Pricing Features", "pricingtable"), 'sis_wp_generate_pricing_features_info', "pricing_packages", "normal", "high");
 }
 add_action('add_meta_boxes', 'sis_wp_pricing_packages_meta_boxes');
 
@@ -60,11 +59,17 @@ function sis_wp_generate_pricing_package_info( $post ) {
 	    'package_price'         => __('Package Price', 'pricingtable'),
 	    'package_tenure'        => __('Package Tenure', 'pricingtable'),
 	    'package_buy_link'      => __('Buy Now Link', 'pricingtable'),
+        'add_package_features'  => __('Add Package Features', 'pricingtable'),
+        'add_features'          => __('Add Features', 'pricingtable'),
+        'delete'                => __('Delete', 'pricingtable'),
 	);
 
     $package_price = get_post_meta($post->ID, "_package_price", true);
     $package_tenure = get_post_meta($post->ID, "_package_tenure", true);
     $package_buy_link = get_post_meta($post->ID, "_package_buy_link", true);
+
+    $package_features = get_post_meta($post->ID, "_package_features", true);
+    $package_features = ($package_features == '') ? array() : json_decode($package_features);
 
 
     $html = '<table class="form-table">';
@@ -83,38 +88,17 @@ function sis_wp_generate_pricing_package_info( $post ) {
     $html .= "<th style=''><label for='Buy Now'>".$pricing_packages_info['package_buy_link']." *</label></th>";
     $html .= "<td><input name='package_buy_link' id='package_buy_link' type='text' value='$package_buy_link' /></td>";
     $html .= "</tr>";
-
-    $html .= '</table>';
-
-    echo $html;
-}
-
-function sis_wp_generate_pricing_features_info( $post ) {
-
-    // Add a nonce field so we can check for it later.
-    wp_nonce_field( 'pricing_package_box', 'pricing_package_box_nonce' );
-
-	$pricing_features_info = array(
-	    'add_package_features'  => __('Add Package Features', 'pricingtable'),
-	    'add_features'          => __('Add Features', 'pricingtable'),
-	    'delete'                => __('Delete', 'pricingtable'),
-	);
-
-    $package_features = get_post_meta($post->ID, "_package_features", true);
-    $package_features = ($package_features == '') ? array() : json_decode($package_features);
-
-    $html = '<table class="form-table">';
-
+    // Package Features
     $html .= "<tr>";
-    $html .= "<th style=''><label for='Price'>".$pricing_features_info['add_package_features']."</label></th>";
-    $html .= "<td><input name='package_feature' id='package_feature' type='text'  /> <input type='button' id='add_features' value='".$pricing_features_info['add_features']."' /></td>";
+    $html .= "<th style=''><label for='Price'>".$pricing_packages_info['add_package_features']."</label></th>";
+    $html .= "<td><input name='package_feature' id='package_feature' type='text'  /> <input type='button' id='add_features' value='".$pricing_packages_info['add_features']."' /></td>";
     $html .= "</tr>";
 
-    $html .= "<tr><td><ul id='package_features_box' name='package_features_box' >";
+    $html .= "<tr><th></th><td><ul id='package_features_box' name='package_features_box' >";
 
     foreach ($package_features as $package_feature) {
         $html .= "<li><input type='hidden' name='package_features[]' value='$package_feature' />$package_feature
-        <a href='javascript:void(0);'> ".$pricing_features_info['delete']."</a></li>";
+        <a href='javascript:void(0);'> ".$pricing_packages_info['delete']."</a></li>";
     }
     
     $html .= "</ul></td></tr>";

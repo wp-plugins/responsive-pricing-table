@@ -58,7 +58,8 @@ function sis_wp_generate_pricing_package_info( $post ) {
 	$pricing_packages_info = array(
 	    'package_price'         => __('Package Price', 'pricingtable'),
 	    'package_tenure'        => __('Package Tenure', 'pricingtable'),
-	    'package_buy_link'      => __('Buy Now Link', 'pricingtable'),
+        'package_buy_link'      => __('Buy Now Link', 'pricingtable'),
+	    'package_buy_text'      => __('Buy Now Label', 'pricingtable'),
         'add_package_features'  => __('Add Package Features', 'pricingtable'),
         'add_features'          => __('Add Features', 'pricingtable'),
         'delete'                => __('Delete', 'pricingtable'),
@@ -67,6 +68,13 @@ function sis_wp_generate_pricing_package_info( $post ) {
     $package_price = get_post_meta($post->ID, "_package_price", true);
     $package_tenure = get_post_meta($post->ID, "_package_tenure", true);
     $package_buy_link = get_post_meta($post->ID, "_package_buy_link", true);
+    $package_buy_text = get_post_meta($post->ID, "_package_buy_text", true);
+
+    if ( empty($package_buy_text) ) {
+        $package_buy_text = __('Buy Now', 'pricingtable');
+    } else {
+        $package_buy_text = $package_buy_text;
+    }
 
     $package_features = get_post_meta($post->ID, "_package_features", true);
     $package_features = ($package_features == '') ? array() : json_decode($package_features);
@@ -87,6 +95,11 @@ function sis_wp_generate_pricing_package_info( $post ) {
     $html .= "<tr>";
     $html .= "<th style=''><label for='Buy Now'>".$pricing_packages_info['package_buy_link']." *</label></th>";
     $html .= "<td><input name='package_buy_link' id='package_buy_link' type='text' value='$package_buy_link' /></td>";
+    $html .= "</tr>";
+    // Buy Now Label
+    $html .= "<tr>";
+    $html .= "<th style=''><label for='Buy Now'>".$pricing_packages_info['package_buy_text']." *</label></th>";
+    $html .= "<td><input name='package_buy_text' id='package_buy_text' type='text' value='$package_buy_text' /></td>";
     $html .= "</tr>";
     // Package Features
     $html .= "<tr>";
@@ -134,6 +147,7 @@ function sis_wp_save_pricing_packages($post_id) {
         $package_price = (isset($_POST['package_price']) ? $_POST['package_price'] : '');
         $package_tenure = (isset($_POST['package_tenure']) ? $_POST['package_tenure'] : '');
         $package_buy_link = (isset($_POST['package_buy_link']) ? $_POST['package_buy_link'] : '');
+        $package_buy_text = (isset($_POST['package_buy_text']) ? $_POST['package_buy_text'] : '');
 
         $package_features = (isset($_POST['package_features']) ? $_POST['package_features'] : array());
         $package_features = json_encode($package_features);
@@ -141,6 +155,7 @@ function sis_wp_save_pricing_packages($post_id) {
         update_post_meta($post_id, "_package_price", $package_price);
         update_post_meta($post_id, "_package_tenure", $package_tenure);
         update_post_meta($post_id, "_package_buy_link", $package_buy_link);
+        update_post_meta($post_id, "_package_buy_text", $package_buy_text);
         update_post_meta($post_id, "_package_features", $package_features);
     } else {
         return $post_id;

@@ -46,9 +46,22 @@ add_action( 'init', 'sis_wp_pricing_tables', 0 );
 function sis_wp_pricing_tables_meta_boxes() {
  
     add_meta_box( "pricing-table-info", __("Pricing Table Info", "pricingtable"), 'sis_wp_generate_pricing_table_info', "pricing_tables", "normal", "high" );
+    add_meta_box( "pricing-table-shortcode", __("Usage (Shortcode)", "pricingtable"), 'sis_wp_generate_pricing_table_shortcode', "pricing_tables", "side", "high" );
  
 }
 add_action( 'add_meta_boxes', 'sis_wp_pricing_tables_meta_boxes' );
+
+function sis_wp_generate_pricing_table_shortcode(){
+    $pricing_id = get_the_ID();
+
+    if ( !empty($pricing_id) ){
+
+        $pricing_id = '[show_pricing_table table_id="'.$pricing_id.'"]';
+
+        echo '<p><b>Copy the following shortcode and paste in post or page where you want to show.</b></p><br>';
+        echo '<p>'.$pricing_id.'</p>';
+    }
+}
 
 // Add meta box content for Pricing Table Info
 function sis_wp_generate_pricing_table_info( $post ){

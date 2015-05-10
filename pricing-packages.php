@@ -7,7 +7,7 @@ function sis_wp_register_pricing_packages() {
 		'singular_name'       => _x( 'Pricing Package', 'Post Type Singular Name', 'pricingtable' ),
 		'menu_name'           => __( 'Pricing Packages', 'pricingtable' ),
 		'parent_item_colon'   => __( 'Parent Pricing Package:', 'pricingtable' ),
-		'all_items'           => __( 'All Pricing Packages', 'pricingtable' ),
+		'all_items'           => __( 'Pricing Packages', 'pricingtable' ),
 		'view_item'           => __( 'View Pricing Package', 'pricingtable' ),
 		'add_new_item'        => __( 'Add New Pricing Package', 'pricingtable' ),
 		'add_new'             => __( 'Add New', 'pricingtable' ),

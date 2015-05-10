@@ -7,7 +7,7 @@ function sis_wp_pricing_tables() {
         'singular_name'       => _x( 'Pricing Table', 'Post Type Singular Name', 'pricingtable' ),
         'menu_name'           => __( 'Pricing Tables', 'pricingtable' ),
         'parent_item_colon'   => __( 'Parent Pricing Table:', 'pricingtable' ),
-        'all_items'           => __( 'All Pricing Tables', 'pricingtable' ),
+        'all_items'           => __( 'Pricing Tables', 'pricingtable' ),
         'view_item'           => __( 'View Pricing Table', 'pricingtable' ),
         'add_new_item'        => __( 'Add New Pricing Table', 'pricingtable' ),
         'add_new'             => __( 'Add New', 'pricingtable' ),

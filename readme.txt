@@ -17,13 +17,13 @@ A WordPress plugin allow you generate and manage CSS3 pricing table or compariso
 
 <ul>
 	<li>Log in to the WordPress Administration Panels.</li>
-	<li>Go to <strong>Responsive Pricing Table -> All Pricing Packages -> Add New</strong></li>
+	<li>Go to <strong>Responsive Pricing Table -> Pricing Packages -> Add New</strong></li>
 	<li>Fill all the fields and add features as many as you need and then click <strong>Publish</strong></li>
 	<li>At this same way, create as many package as you need.</li>
 </ul>
 
 <ul>
-	<li>After creating Packages, Go to <strong>Responsive Pricing Table -> All Pricing Tables -> Add New</strong></li>
+	<li>After creating Packages, Go to <strong>Responsive Pricing Table -> Pricing Tables -> Add New</strong></li>
 	<li>Give your table title and check whick packages you want to include in the table and click <strong>Publish</strong></li>
 	<li>Copy the generated shortcode and paste in post or page where you want to show pricing table.</li>
 </ul>

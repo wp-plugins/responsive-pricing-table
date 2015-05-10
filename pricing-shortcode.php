@@ -9,12 +9,10 @@ function sis_wp_generate_pricing_table($atts) {
 		'table_id' => '0',
 	), $atts));
 
-    $buy_now = __('Buy Now', 'pricingtable');
-
     $table_packages = get_post_meta($table_id, "_table_packages", true);
     $table_packages = ($table_packages == '') ? array() : json_decode($table_packages);
 
-    $html = '<ul class="pricing_table">';
+    $html = '<ul id="table-'.$table_id.'" class="pricing_table">';
 
     $pricing_index = 0;
     foreach ($table_packages as $table_package) {
@@ -25,6 +23,13 @@ function sis_wp_generate_pricing_table($atts) {
         $package_price = get_post_meta($table_package, "_package_price", true);
         $package_tenure = get_post_meta($table_package, "_package_tenure", true);
         $package_buy_link = get_post_meta($table_package, "_package_buy_link", true);
+        $package_buy_text = get_post_meta($table_package, "_package_buy_text", true);
+
+        if ( empty($package_buy_text) ) {
+            $package_buy_text = __('Buy Now', 'pricingtable');
+        } else {
+            $package_buy_text = $package_buy_text;
+        }
 
         $package_features = get_post_meta($table_package, "_package_features", true);
         $package_features = ($package_features == '') ? array() : json_decode($package_features);
@@ -43,7 +48,7 @@ function sis_wp_generate_pricing_table($atts) {
         }
 
         $html .= '</ul>';
-        $html .= '<div class="footer"><a href="' . $package_buy_link . '" class="package_buy_link" rel="nofollow">'.$buy_now.'</a></div>';
+        $html .= '<div class="footer"><a href="' . $package_buy_link . '" class="package_buy_link" rel="nofollow">'.$package_buy_text.'</a></div>';
         $html .= '</li>';
     }
     $html .= '</ul>';

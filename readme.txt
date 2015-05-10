@@ -3,7 +3,7 @@ Contributors: sayful
 Tags: plugin, shortcode, pricing table, responsive pricing table, easy pricing table,
 Requires at least: 3.0
 Tested up to: 4.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,15 +25,8 @@ A WordPress plugin allow you generate and manage CSS3 pricing table or compariso
 <ul>
 	<li>After creating Packages, Go to <strong>Responsive Pricing Table -> All Pricing Tables -> Add New</strong></li>
 	<li>Give your table title and check whick packages you want to include in the table and click <strong>Publish</strong></li>
+	<li>Copy the generated shortcode and paste in post or page where you want to show pricing table.</li>
 </ul>
-
-Just paste the following shortcode where you want to display the pricing table. inside table_id="" give table ID, to get table ID go "Pricing Tables >> All Pricing Tables" 
-
-`[show_pricing_table table_id=""]`
-
-Or you can paste following to add slider to your theme:
-
-`<?php echo do_shortcode('[show_pricing_table table_id=""]'); ?>`
 
 
 == Installation ==
@@ -73,10 +66,11 @@ Do you have questions or issues with Responsive Pricing Table? [Ask for support 
 
 == Changelog ==
 
-= version 2.0.0 =
-* Fixed bug regarding varifing nonce fields at pricing-packages.php
-* Fixed bug regarding varifing nonce fields at pricing-table.php
+= version 1.0.4 =
+* Fixed bug regarding verifying nonce fields at pricing-packages.php
+* Fixed bug regarding verifying nonce fields at pricing-table.php
 * Merge "Pricing Table" and "Pricing Packages" into an Admin Menu "Responsive Pricing Table"
+* Auto shortcode generator at pricing table for better user experience
 
 = version 1.0.3 =
 * Fixed some issue on style

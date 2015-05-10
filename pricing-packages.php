@@ -25,11 +25,10 @@ function sis_wp_register_pricing_packages() {
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'show_in_nav_menus'   => true,
-		'show_in_admin_bar'   => true,
+		'show_in_menu'        => 'responsive-pricing-table',
+		'show_in_nav_menus'   => false,
+		'show_in_admin_bar'   => false,
 		'menu_position'       => 5,
-		'menu_icon'           => ''.plugins_url( 'img/packages.png' , __FILE__ ).'',
 		'can_export'          => true,
 		'has_archive'         => true,
 		'exclude_from_search' => false,
@@ -52,8 +51,10 @@ function sis_wp_pricing_packages_meta_boxes() {
 add_action('add_meta_boxes', 'sis_wp_pricing_packages_meta_boxes');
 
 
-function sis_wp_generate_pricing_package_info() {
-    global $post;
+function sis_wp_generate_pricing_package_info( $post ) {
+
+    // Add a nonce field so we can check for it later.
+    wp_nonce_field( 'pricing_package_box', 'pricing_package_box_nonce' );
 
 	$pricing_packages_info = array(
 	    'package_price'         => __('Package Price', 'pricingtable'),
@@ -65,9 +66,8 @@ function sis_wp_generate_pricing_package_info() {
     $package_tenure = get_post_meta($post->ID, "_package_tenure", true);
     $package_buy_link = get_post_meta($post->ID, "_package_buy_link", true);
 
-    $html = '<input type="hidden" name="pricing_package_box_nonce" value="' . wp_create_nonce(basename(__FILE__)) . '" />';
 
-    $html .= '<table class="form-table">';
+    $html = '<table class="form-table">';
     // Pricing Price
     $html .= "<tr>";
     $html .= "<th style=''><label for='Price'>".$pricing_packages_info['package_price']." *</label></th>";
@@ -89,9 +89,10 @@ function sis_wp_generate_pricing_package_info() {
     echo $html;
 }
 
-function sis_wp_generate_pricing_features_info() {
+function sis_wp_generate_pricing_features_info( $post ) {
 
-    global $post;
+    // Add a nonce field so we can check for it later.
+    wp_nonce_field( 'pricing_package_box', 'pricing_package_box_nonce' );
 
 	$pricing_features_info = array(
 	    'add_package_features'  => __('Add Package Features', 'pricingtable'),
@@ -102,7 +103,7 @@ function sis_wp_generate_pricing_features_info() {
     $package_features = get_post_meta($post->ID, "_package_features", true);
     $package_features = ($package_features == '') ? array() : json_decode($package_features);
 
-    $html .= '<table class="form-table">';
+    $html = '<table class="form-table">';
 
     $html .= "<tr>";
     $html .= "<th style=''><label for='Price'>".$pricing_features_info['add_package_features']."</label></th>";
@@ -125,13 +126,24 @@ function sis_wp_generate_pricing_features_info() {
 
 
 function sis_wp_save_pricing_packages($post_id) {
+    /*
+     * We need to verify this came from our screen and with proper authorization,
+     * because the save_post action can be triggered at other times.
+     */
 
-    if (!wp_verify_nonce($_POST['pricing_package_box_nonce'], basename(__FILE__))) {
-        return $post_id;
+    // Check if our nonce is set.
+    if ( ! isset( $_POST['pricing_package_box_nonce'] ) ) {
+        return;
     }
 
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return $post_id;
+    // Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $_POST['pricing_package_box_nonce'], 'pricing_package_box' ) ) {
+        return;
+    }
+
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
     }
 
     if ('pricing_packages' == $_POST['post_type'] && current_user_can('edit_post', $post_id)) {

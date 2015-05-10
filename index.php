@@ -11,8 +11,8 @@ Domain Path: /languages/
 License: GPLv2 or later
 */
 // Include others files
-include_once('pricing-packages.php');
 include_once('pricing-tables.php');
+include_once('pricing-packages.php');
 include_once('pricing-shortcode.php');
 
 /**
@@ -44,3 +44,35 @@ function sis_wp_pricing_front_scripts() {
 }
 
 add_action('wp_enqueue_scripts', 'sis_wp_pricing_front_scripts');
+
+
+/*
+ * Pricing Table Admin Menu
+ */
+function responsive_pricing_table_menu(){
+	add_menu_page(
+		__('Responsive Pricing Table', 'pricingtable'),
+		__('Responsive Pricing Table', 'pricingtable'),
+		'manage_options',
+		'responsive-pricing-table',
+		'responsive_pricing_table_options',
+		plugins_url( 'img/table.png' , __FILE__ ),
+		35
+	);
+}
+add_action('admin_menu', 'responsive_pricing_table_menu');
+
+function responsive_pricing_table_options(){}
+
+
+
+/**
+ * Flush the rewrite rules on activation and deactivation
+ */
+function responsive_pricing_table_activation_deactivation() {
+	sis_wp_register_pricing_packages();
+	sis_wp_pricing_tables();
+	flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, 'responsive_pricing_table_activation_deactivation' );
+register_deactivation_hook( __FILE__, 'responsive_pricing_table_activation_deactivation' );

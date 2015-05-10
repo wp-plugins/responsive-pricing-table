@@ -2,7 +2,7 @@
 Contributors: sayful
 Tags: plugin, shortcode, pricing table, responsive pricing table, easy pricing table,
 Requires at least: 3.0
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -64,6 +64,11 @@ Do you have questions or issues with Responsive Pricing Table? [Ask for support 
 5. Screenshot of front-end display of pricing table.
 
 == Changelog ==
+
+= version 2.0.0 =
+* Fixed bug regarding varifing nonce fields at pricing-packages.php
+* Fixed bug regarding varifing nonce fields at pricing-table.php
+* Merge "Pricing Table" and "Pricing Packages" into an Admin Menu "Responsive Pricing Table"
 
 = version 1.0.3 =
 * Fixed some issue on style

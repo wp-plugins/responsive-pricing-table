@@ -25,11 +25,10 @@ function sis_wp_pricing_tables() {
         'hierarchical'        => false,
         'public'              => true,
         'show_ui'             => true,
-        'show_in_menu'        => true,
-        'show_in_nav_menus'   => true,
-        'show_in_admin_bar'   => true,
+        'show_in_menu'        => 'responsive-pricing-table',
+        'show_in_nav_menus'   => false,
+        'show_in_admin_bar'   => false,
         'menu_position'       => 5,
-        'menu_icon'           => ''.plugins_url( 'img/table.png' , __FILE__ ).'',
         'can_export'          => true,
         'has_archive'         => true,
         'exclude_from_search' => false,
@@ -52,8 +51,10 @@ function sis_wp_pricing_tables_meta_boxes() {
 add_action( 'add_meta_boxes', 'sis_wp_pricing_tables_meta_boxes' );
 
 // Add meta box content for Pricing Table Info
-function sis_wp_generate_pricing_table_info(){
-    global $post;
+function sis_wp_generate_pricing_table_info( $post ){
+
+    // Add a nonce field so we can check for it later.
+    wp_nonce_field( 'pricing_table_box', 'pricing_table_box_nonce' );
 
     $pricing_table_info = array(
         'package_status'         => __('Package Status', 'pricingtable'),
@@ -71,9 +72,7 @@ function sis_wp_generate_pricing_table_info(){
         'order' => 'ASC'
     ) );
  
-    $html = '<input type="hidden" name="pricing_table_box_nonce" value="' . wp_create_nonce( basename( __FILE__ ) ) . '" />';
- 
-    $html .= '<table class="form-table">';
+    $html = '<table class="form-table">';
     $html .= '<tr>';
     $html .= '<th>'.$pricing_table_info['package_status'].'</th>';
     $html .= '<td>'.$pricing_table_info['package_name'].'</td></tr>';
@@ -98,12 +97,24 @@ function sis_wp_generate_pricing_table_info(){
 // Save Priceng Table
 function sis_wp_save_pricing_tables($post_id) {
 
-    if (!wp_verify_nonce($_POST['pricing_table_box_nonce'], basename(__FILE__))) {
-        return $post_id;
+    /*
+     * We need to verify this came from our screen and with proper authorization,
+     * because the save_post action can be triggered at other times.
+     */
+
+    // Check if our nonce is set.
+    if ( ! isset( $_POST['pricing_table_box_nonce'] ) ) {
+        return;
     }
 
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return $post_id;
+    // Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $_POST['pricing_table_box_nonce'], 'pricing_table_box' ) ) {
+        return;
+    }
+
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
     }
 
     if ('pricing_tables' == $_POST['post_type'] && current_user_can('edit_post', $post_id)) {
@@ -123,9 +134,9 @@ function sis_wp_edit_pricing_tables_columns($columns){
     
     $columns = array(
         'cb' => '<input type="checkbox" />',
-        'ID' => __('Pricing Table No', 'pricingtable'),
         'title' => __('Pricing Table Name', 'pricingtable'),
-        'date' => __('Date', 'pricingtable')
+        'ID' => __('Pricing Table No', 'pricingtable'),
+        'usage' => __('Usage (shortcode)', 'pricingtable')
     );
 
     return $columns;
@@ -154,7 +165,15 @@ function sis_wp_manage_pricing_tables_columns($column, $post_id) {
 
             break;
 
+        case 'usage':
 
+            $pricing_id = $post_id;
+
+            if ( !empty($pricing_id) ){
+                echo '[show_pricing_table table_id="'.$pricing_id.'"]';
+            }
+
+            break;
         default :
             break;
     }

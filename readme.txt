@@ -67,6 +67,7 @@ Do you have questions or issues with Responsive Pricing Table? [Ask for support 
 == Changelog ==
 
 = version 1.0.4 =
+* Fixed bug regarding showing table at the top of content
 * Fixed bug regarding verifying nonce fields at pricing-packages.php
 * Fixed bug regarding verifying nonce fields at pricing-table.php
 * Merge "Pricing Table" and "Pricing Packages" into an Admin Menu "Responsive Pricing Table"

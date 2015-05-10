@@ -22,7 +22,7 @@
     transition: all .25s;
     position: relative;
     box-sizing: border-box;
-    margin: 0 !important;
+    margin: 0 0 20px !important;
     padding: 0;
     border-bottom: 1px solid transparent
 }

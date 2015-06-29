@@ -1,9 +1,9 @@
 === Responsive Pricing Table ===
 Contributors: sayful
 Tags: plugin, shortcode, pricing table, responsive pricing table, easy pricing table,
-Requires at least: 3.0
+Requires at least: 3.5
 Tested up to: 4.2
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,9 @@ Do you have questions or issues with Responsive Pricing Table? [Ask for support 
 
 == Changelog ==
 
+= version 1.1.0 =
+* Fixed some bug
+
 = version 1.0.4 =
 * Fixed bug regarding showing table at the top of content
 * Fixed bug regarding verifying nonce fields at pricing-packages.php
@@ -89,13 +92,6 @@ Do you have questions or issues with Responsive Pricing Table? [Ask for support 
 * Custom Post System with shortcode.
 * Fully Responsive.
 
-== CREDIT ==
-
-1.This plugin was developed by [Sayful Islam](http://sayful.net)
-
-== CONTACT ==
-
-[Sayful Islam](http://sayful1.wordpress.com/100-2/)
 
 == Upgrade Notice ==
 
